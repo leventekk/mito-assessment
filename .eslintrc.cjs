@@ -24,12 +24,10 @@ module.exports = {
       version: 'detect'
     }
   },
-  plugins: ['simple-import-sort', 'import', 'react', 'prettier'],
+  plugins: ['import', 'react', 'prettier'],
   rules: {
     '@typescript-eslint/triple-slash-reference': 0,
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
-    'simple-import-sort/imports': 'error',
-    'simple-import-sort/exports': 'error',
     'import/first': 'error',
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',

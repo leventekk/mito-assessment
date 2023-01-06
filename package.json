@@ -28,14 +28,14 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "latest",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-unicorn": "^45.0.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.8.1",
     "typescript": "*",
-    "vite": "^4.0.0"
+    "vite": "^4.0.0",
+    "vite-tsconfig-paths": "^4.0.3"
   },
   "volta": {
     "node": "18.12.1",

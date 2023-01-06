@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
-import App from './App'
+import Theme from '@module/Theme/Theme'
+import Home from '@template/Home'
 
 ReactDOM.createRoot(document.querySelector('#root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <Theme>
+      <Home />
+    </Theme>
   </React.StrictMode>
 )

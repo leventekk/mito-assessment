@@ -3158,15 +3158,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-simple-import-sort@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "eslint-plugin-simple-import-sort@npm:8.0.0"
-  peerDependencies:
-    eslint: ">=5.0.0"
-  checksum: d2a92a7d148803ee9ad4f081892a8d03820198c36a0f4f16a97d9f686a714edc9c9a9e51cc79cb0ba1afff76a1fde6a5eae50e9e3754928068227c92a2db5d6b
-  languageName: node
-  linkType: hard
-
 "eslint-plugin-unicorn@npm:^45.0.2":
   version: 45.0.2
   resolution: "eslint-plugin-unicorn@npm:45.0.2"
@@ -3666,6 +3657,13 @@ __metadata:
     merge2: ^1.4.1
     slash: ^3.0.0
   checksum: b4be8885e0cfa018fc783792942d53926c35c50b3aefd3fdcfb9d22c627639dc26bd2327a40a0b74b074100ce95bb7187bfeae2f236856aa3de183af7a02aea6
+  languageName: node
+  linkType: hard
+
+"globrex@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "globrex@npm:0.1.2"
+  checksum: adca162494a176ce9ecf4dd232f7b802956bb1966b37f60c15e49d2e7d961b66c60826366dc2649093cad5a0d69970cfa8875bd1695b5a1a2f33dcd2aa88da3c
   languageName: node
   linkType: hard
 
@@ -4568,7 +4566,6 @@ __metadata:
     eslint-plugin-promise: ^6.0.0
     eslint-plugin-react: latest
     eslint-plugin-react-hooks: ^4.6.0
-    eslint-plugin-simple-import-sort: ^8.0.0
     eslint-plugin-unicorn: ^45.0.2
     husky: ^8.0.3
     lint-staged: ^13.1.0
@@ -4579,6 +4576,7 @@ __metadata:
     styled-components: beta
     typescript: "*"
     vite: ^4.0.0
+    vite-tsconfig-paths: ^4.0.3
   languageName: unknown
   linkType: soft
 
@@ -5941,6 +5939,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tsconfck@npm:^2.0.1":
+  version: 2.0.2
+  resolution: "tsconfck@npm:2.0.2"
+  peerDependencies:
+    typescript: ^4.3.5
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  bin:
+    tsconfck: bin/tsconfck.js
+  checksum: bc914042b2f5e1f9d7bbadd05b74031f32e2f1757061743d70d86d17dda0734d838e67abb0105b81db67c30b66496e5d408cbe216bb43b3d567a181b0448ddc1
+  languageName: node
+  linkType: hard
+
 "tsconfig-paths@npm:^3.14.1":
   version: 3.14.1
   resolution: "tsconfig-paths@npm:3.14.1"
@@ -6140,6 +6152,19 @@ __metadata:
     spdx-correct: ^3.0.0
     spdx-expression-parse: ^3.0.0
   checksum: 35703ac889d419cf2aceef63daeadbe4e77227c39ab6287eeb6c1b36a746b364f50ba22e88591f5d017bc54685d8137bc2d328d0a896e4d3fd22093c0f32a9ad
+  languageName: node
+  linkType: hard
+
+"vite-tsconfig-paths@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "vite-tsconfig-paths@npm:4.0.3"
+  dependencies:
+    debug: ^4.1.1
+    globrex: ^0.1.2
+    tsconfck: ^2.0.1
+  peerDependencies:
+    vite: ">2.0.0-0"
+  checksum: 491bc977e1510ed8481d6492ffa06d3c6510e9fe6b418540b1d818539c91261e7c500a13f60ce2ed2b1435e00b45e62302a8257c365c8ce19a2784fb0f290652
   languageName: node
   linkType: hard
 
