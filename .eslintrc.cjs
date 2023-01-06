@@ -31,6 +31,6 @@ module.exports = {
     'import/first': 'error',
     'import/newline-after-import': 'error',
     'import/no-duplicates': 'error',
-    'unicorn/filename-case': ['error', { cases: { pascalCase: true, kebabCase: true } }]
+    'unicorn/filename-case': ['off']
   }
 }

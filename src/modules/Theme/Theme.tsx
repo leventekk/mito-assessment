@@ -4,7 +4,9 @@ const themeConfig: DefaultTheme = {
   defaultFontFamily: 'Roboto, sans-serif',
   palette: {
     primary: '#512da8',
-    secondary: '#eee',
+    secondary: '#fafafa',
+    dark: '#bcbcbc',
+    light: '#fff',
     text: '#212121'
   }
 }
@@ -21,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.palette.secondary};
+    background: ${({ theme }) => theme.palette.light};
     color: ${({ theme }) => theme.palette.text};
     font-family: ${({ theme }) => theme.defaultFontFamily};
     margin: 0;

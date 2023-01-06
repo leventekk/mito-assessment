@@ -19,7 +19,10 @@
     "paths": {
       "@module/*": ["src/modules/*"],
       "@element/*": ["src/elements/*"],
-      "@template/*": ["src/templates/*"]
+      "@template/*": ["src/templates/*"],
+      "@context/*": ["src/context/*"],
+      "@hook/*": ["src/hooks/*"],
+      "@config": ["src/config"]
     }
   },
   "include": ["src"],
