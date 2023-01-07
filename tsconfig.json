@@ -22,6 +22,7 @@
       "@template/*": ["src/templates/*"],
       "@context/*": ["src/context/*"],
       "@hook/*": ["src/hooks/*"],
+      "@helper/*": ["src/helpers/*"],
       "@config": ["src/config"]
     },
     "plugins": [

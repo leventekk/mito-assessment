@@ -15,6 +15,18 @@ const Input = styled.input.attrs({ type: 'range' })`
   display: block;
   width: 100%;
 
+  &:disabled {
+    cursor: not-allowed;
+
+    &::-moz-range-progress {
+      background: ${({ theme }) => theme?.palette.dark};
+    }
+
+    &::-moz-range-thumb {
+      border-color: ${({ theme }) => theme?.palette.dark};
+    }
+  }
+
   &::-moz-range-track {
     background: ${({ theme }) => theme?.palette.secondary};
     border-radius: 0.5rem;
@@ -38,7 +50,7 @@ const Input = styled.input.attrs({ type: 'range' })`
 
 const Slider = (): React.ReactElement => {
   const {
-    state: { drawInterval },
+    state: { drawInterval, isRunning },
     dispatch
   } = useSimulator()
 
@@ -52,7 +64,7 @@ const Slider = (): React.ReactElement => {
   return (
     <Wrapper>
       <Label>Speed</Label>
-      <Input step={1} min={1} max={1000} defaultValue={drawInterval} onChange={onChange} />
+      <Input step={1} min={1} max={1000} disabled={isRunning} defaultValue={drawInterval} onChange={onChange} />
     </Wrapper>
   )
 }

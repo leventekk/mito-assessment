@@ -1,11 +1,23 @@
-import { styled } from 'styled-components'
+import { styled, css } from 'styled-components'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ $isHighlighted?: boolean }>`
   align-items: center;
   display: flex;
   flex-direction: column;
   text-align: center;
   padding: 0.75rem 0.5rem;
+
+  ${({ $isHighlighted }) =>
+    $isHighlighted === true &&
+    css`
+      background: ${({ theme }) => theme.palette.primary};
+      color: ${({ theme }) => theme.palette.light};
+
+      ${Title},
+      ${Note} {
+        color: inherit;
+      }
+    `}
 
   & + & {
     box-shadow: inset 1px 0 rgba(0, 0, 0, 0.2);
@@ -29,8 +41,18 @@ const Note = styled.small`
   font-size: 0.625rem;
 `
 
-const Item = ({ title, value, note }: { title: string; value: number; note?: string }): React.ReactElement => (
-  <Wrapper>
+const Item = ({
+  title,
+  value,
+  note,
+  isHighlighted
+}: {
+  title: string
+  value: number
+  isHighlighted?: boolean
+  note?: string
+}): React.ReactElement => (
+  <Wrapper $isHighlighted={isHighlighted}>
     <Title>{title}</Title>
     <Value>{value}</Value>
     {note !== null && <Note>{note}</Note>}

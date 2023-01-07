@@ -1,5 +1,5 @@
-import useSimulator from '@hook/useSimulator'
 import { styled } from 'styled-components'
+import useSimulator from '@hook/useSimulator'
 import Display from './NumbersDisplay'
 import Edit from './EditableNumbersDisplay'
 
@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 
 const Numbers = (): React.ReactElement => {
   const {
-    state: { drawResult, userNumbers, withRandomNumbers },
+    state: { drawResult, userNumbers, isRunning, withRandomNumbers },
     dispatch
   } = useSimulator()
 
@@ -22,6 +22,7 @@ const Numbers = (): React.ReactElement => {
         {...{ withRandomNumbers }}
         title="Your numbers:"
         values={userNumbers}
+        isDisabled={isRunning}
         onAddNumber={(number: number) => {
           dispatch({ type: 'addNumber', number })
         }}

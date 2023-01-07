@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  overflow: hidden;
 `
 
 const List = (): React.ReactElement => {
@@ -21,7 +22,7 @@ const List = (): React.ReactElement => {
 
   return (
     <Wrapper>
-      <Item title="Lottery" value={drawCount} note={`Years spent: ${yearsSpent}`} />
+      <Item title="Lottery" value={drawCount} note={`Years spent: ${yearsSpent}`} isHighlighted={fiveTimes === 1} />
       <Item title="2 matches" value={twoTimes} />
       <Item title="3 matches" value={threeTimes} />
       <Item title="4 matches" value={fourTimes} />

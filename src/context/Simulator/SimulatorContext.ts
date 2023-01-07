@@ -8,18 +8,19 @@ export interface Matches {
 }
 
 export interface State {
-  moneySpent: number
-  matches: Matches
-  userNumbers: number[]
-  drawResult: number[]
   drawCount: number
-  withRandomNumbers: boolean
   drawInterval: number
+  drawResult: number[]
+  isRunning: boolean
+  matches: Matches
+  moneySpent: number
+  userNumbers: number[]
+  lockedUserNumbers: number[]
+  withRandomNumbers: boolean
   yearsSpent: number
-  hasFiveTimesMatch: boolean
 }
 
-type ActionNames = 'updateInterval' | 'draw' | 'addNumber' | 'removeNumber' | 'toggleRandomNumbers'
+type ActionNames = 'updateInterval' | 'draw' | 'addNumber' | 'removeNumber' | 'toggleRandomNumbers' | 'start' | 'stop'
 
 type GeneralAction<T extends ActionNames, S = {}> = {
   type: T
@@ -27,28 +28,31 @@ type GeneralAction<T extends ActionNames, S = {}> = {
 
 export type Action =
   | GeneralAction<'toggleRandomNumbers'>
+  | GeneralAction<'start'>
+  | GeneralAction<'stop'>
   | GeneralAction<'updateInterval', { interval: number }>
-  | GeneralAction<'draw', { numbers: number[] }>
+  | GeneralAction<'draw'>
   | GeneralAction<'addNumber', { number: number }>
   | GeneralAction<'removeNumber', { number: number }>
 
 export type Dispatch = (action: Action) => void
 
 export const simulatorState: State = {
-  moneySpent: 33_000,
+  drawCount: 0,
+  drawInterval: 500,
+  drawResult: [],
+  isRunning: false,
   matches: {
     twoTimes: 0,
-    threeTimes: 1,
-    fourTimes: 1,
-    fiveTimes: 10
+    threeTimes: 0,
+    fourTimes: 0,
+    fiveTimes: 0
   },
-  userNumbers: [55, 39, 2],
-  drawResult: [15, 34, 11, 25, 39],
+  moneySpent: 0,
+  userNumbers: [],
+  lockedUserNumbers: [],
   withRandomNumbers: false,
-  drawCount: 2321,
-  drawInterval: 500,
-  yearsSpent: 10,
-  hasFiveTimesMatch: false
+  yearsSpent: 10
 }
 
 export interface SimulatorContextValue {

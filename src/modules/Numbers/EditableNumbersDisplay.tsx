@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { styled } from 'styled-components'
+import { LOTTERY_MIN_NUMBER, LOTTERY_MAX_NUMBER } from '@config'
 import NumbersDisplay, { type NumbersDisplayAttributes } from './NumbersDisplay'
 
 interface EditableNumbersDisplayAttributes extends NumbersDisplayAttributes {
+  isDisabled?: boolean
   onToggleRandom: () => void
   onAddNumber: (number: number) => void
   withRandomNumbers: boolean
@@ -10,7 +12,10 @@ interface EditableNumbersDisplayAttributes extends NumbersDisplayAttributes {
 
 const isAllowed = (value: string): boolean => {
   const numericValue = Number.parseInt(value, 10)
-  return value.length === 0 || (/\d/.test(value) && value.length <= 2 && numericValue >= 1 && numericValue <= 90)
+  return (
+    value.length === 0 ||
+    (/\d/.test(value) && value.length <= 2 && numericValue >= LOTTERY_MIN_NUMBER && numericValue <= LOTTERY_MAX_NUMBER)
+  )
 }
 
 const NumberInput = styled.input`
@@ -28,6 +33,7 @@ const EditableNumbersDisplay = ({
   title,
   values,
   withRandomNumbers,
+  isDisabled = false,
   onAddNumber,
   onRemove,
   onToggleRandom
@@ -42,8 +48,8 @@ const EditableNumbersDisplay = ({
   }
 
   return (
-    <NumbersDisplay {...{ title, values, onRemove }}>
-      {values.length < 5 && (
+    <NumbersDisplay {...{ title, values, ...(isDisabled ? {} : { onRemove }) }}>
+      {!isDisabled && values.length < 5 && (
         <>
           {!withRandomNumbers && (
             <NumberInput
@@ -64,7 +70,7 @@ const EditableNumbersDisplay = ({
             />
           )}
           <label>
-            Play with random numbers <input type="checkbox" onChange={onToggleRandom} />
+            Play with random numbers <input type="checkbox" checked={withRandomNumbers} onChange={onToggleRandom} />
           </label>
         </>
       )}
