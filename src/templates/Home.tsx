@@ -5,6 +5,7 @@ import Simulator from '@element/Simulator/Wrapper'
 import Statistics from '@module/Statistics/List'
 import Numbers from '@module/Numbers/Numbers'
 import Summary from '@module/Summary/Summary'
+import Slider from '@module/Speed/Slider'
 
 const App = (): React.ReactElement => (
   <>
@@ -15,7 +16,7 @@ const App = (): React.ReactElement => (
         <Statistics />
         <Numbers />
         <Summary />
-        <div>slider</div>
+        <Slider />
       </Simulator>
     </Container>
   </>

@@ -7,10 +7,10 @@ const DRAW_PER_YEAR = 52 // 52 weeks
 
 const simulatorReducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'updateDelay': {
+    case 'updateInterval': {
       return {
         ...state,
-        drawDelay: action.delay
+        drawInterval: action.interval
       }
     }
     case 'toggleRandomNumbers': {

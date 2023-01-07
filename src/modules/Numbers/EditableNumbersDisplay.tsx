@@ -14,13 +14,14 @@ const isAllowed = (value: string): boolean => {
 }
 
 const NumberInput = styled.input`
-  height: 2rem;
-  padding: 0 0.5rem;
+  background: ${({ theme }) => theme.palette.secondary};
   border-radius: 0.25rem;
   border: none;
-  width: 2.5rem;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  background: ${({ theme }) => theme.palette.secondary};
+  height: 2rem;
+  padding: 0 0.5rem;
+  text-align: center;
+  width: 2.5rem;
 `
 
 const EditableNumbersDisplay = ({

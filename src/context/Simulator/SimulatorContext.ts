@@ -14,12 +14,12 @@ export interface State {
   drawResult: number[]
   drawCount: number
   withRandomNumbers: boolean
-  drawDelay: number
+  drawInterval: number
   yearsSpent: number
   hasFiveTimesMatch: boolean
 }
 
-type ActionNames = 'updateDelay' | 'draw' | 'addNumber' | 'removeNumber' | 'toggleRandomNumbers'
+type ActionNames = 'updateInterval' | 'draw' | 'addNumber' | 'removeNumber' | 'toggleRandomNumbers'
 
 type GeneralAction<T extends ActionNames, S = {}> = {
   type: T
@@ -27,7 +27,7 @@ type GeneralAction<T extends ActionNames, S = {}> = {
 
 export type Action =
   | GeneralAction<'toggleRandomNumbers'>
-  | GeneralAction<'updateDelay', { delay: number }>
+  | GeneralAction<'updateInterval', { interval: number }>
   | GeneralAction<'draw', { numbers: number[] }>
   | GeneralAction<'addNumber', { number: number }>
   | GeneralAction<'removeNumber', { number: number }>
@@ -46,7 +46,7 @@ export const simulatorState: State = {
   drawResult: [15, 34, 11, 25, 39],
   withRandomNumbers: false,
   drawCount: 2321,
-  drawDelay: 500,
+  drawInterval: 500,
   yearsSpent: 10,
   hasFiveTimesMatch: false
 }
