@@ -1,4 +1,5 @@
 import { styled, css } from 'styled-components'
+import { useEffect } from 'react'
 import useSimulator from '@hook/useSimulator'
 import { LOTTERY_NUMBER_COUNT } from '@config'
 
@@ -28,9 +29,11 @@ const Button = styled.button<{ $isInactive?: boolean }>`
   }
 `
 
+let interval: number
+
 const Action = (): React.ReactElement => {
   const {
-    state: { isRunning, withRandomNumbers, userNumbers },
+    state: { isRunning, drawInterval, withRandomNumbers, userNumbers },
     dispatch
   } = useSimulator()
   const isAllowedToStart = withRandomNumbers || userNumbers.length === LOTTERY_NUMBER_COUNT
@@ -38,6 +41,18 @@ const Action = (): React.ReactElement => {
   const onClick = (): void => {
     dispatch({ type: isRunning ? 'stop' : 'start' })
   }
+
+  useEffect(() => {
+    if (isRunning) {
+      interval = setInterval(() => {
+        dispatch({ type: 'draw' })
+      }, drawInterval)
+    }
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [isRunning, drawInterval, dispatch])
 
   return (
     <div>
