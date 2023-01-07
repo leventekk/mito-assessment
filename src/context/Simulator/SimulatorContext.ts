@@ -35,7 +35,7 @@ export type Action =
 export type Dispatch = (action: Action) => void
 
 export const simulatorState: State = {
-  moneySpent: 0,
+  moneySpent: 33_000,
   matches: {
     twoTimes: 0,
     threeTimes: 1,
