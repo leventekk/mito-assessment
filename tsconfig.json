@@ -23,7 +23,12 @@
       "@context/*": ["src/context/*"],
       "@hook/*": ["src/hooks/*"],
       "@config": ["src/config"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "@styled/typescript-styled-plugin"
+      }
+    ]
   },
   "include": ["src"],
   "references": [

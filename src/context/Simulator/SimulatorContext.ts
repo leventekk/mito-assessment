@@ -19,9 +19,9 @@ export interface State {
   hasFiveTimesMatch: boolean
 }
 
-type ActionNames = 'updateDelay' | 'draw' | 'setNumbers' | 'toggleRandomNumbers'
+type ActionNames = 'updateDelay' | 'draw' | 'addNumber' | 'removeNumber' | 'toggleRandomNumbers'
 
-type GeneralAction<T extends ActionNames, S = void> = {
+type GeneralAction<T extends ActionNames, S = {}> = {
   type: T
 } & S
 
@@ -29,7 +29,8 @@ export type Action =
   | GeneralAction<'toggleRandomNumbers'>
   | GeneralAction<'updateDelay', { delay: number }>
   | GeneralAction<'draw', { numbers: number[] }>
-  | GeneralAction<'setNumbers', { numbers: number[] }>
+  | GeneralAction<'addNumber', { number: number }>
+  | GeneralAction<'removeNumber', { number: number }>
 
 export type Dispatch = (action: Action) => void
 
@@ -41,8 +42,8 @@ export const simulatorState: State = {
     fourTimes: 1,
     fiveTimes: 10
   },
-  userNumbers: [],
-  drawResult: [],
+  userNumbers: [55, 39, 2],
+  drawResult: [15, 34, 11, 25, 39],
   withRandomNumbers: false,
   drawCount: 2321,
   drawDelay: 500,

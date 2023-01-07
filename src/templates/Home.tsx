@@ -3,6 +3,7 @@ import Container from '@element/Grid/Container'
 import Title from '@element/Text/Title'
 import Simulator from '@element/Simulator/Wrapper'
 import Statistics from '@module/Statistics/List'
+import Numbers from '@module/Numbers/Numbers'
 
 const App = (): React.ReactElement => (
   <>
@@ -11,10 +12,7 @@ const App = (): React.ReactElement => (
       <Title>Lottery Simulator</Title>
       <Simulator>
         <Statistics />
-        <div>
-          <div>numbers 1</div>
-          <div>numbers 2</div>
-        </div>
+        <Numbers />
         <div>summary</div>
         <div>slider</div>
       </Simulator>
