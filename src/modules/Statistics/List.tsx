@@ -1,14 +1,26 @@
 import { styled } from 'styled-components'
 import useSimulator from '@hook/useSimulator'
-import Item from './Item'
+import media from '@helper/media'
+import Item, { Wrapper as ItemWrapper } from './Item'
 
 const Wrapper = styled.div`
-  background: ${({ theme }) => theme.palette.secondary};
   border-radius: 0.5rem;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   overflow: hidden;
+
+  ${media.greaterThan('desktop')`
+    grid-template-columns: repeat(5, 1fr);
+  `}
+
+  ${ItemWrapper} + ${ItemWrapper} {
+    ${
+      media.greaterThan('desktop')`
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+      ` /* sc-custom '@media screen { a { top: 1; } }' */
+    }
+  }
 `
 
 const List = (): React.ReactElement => {
@@ -22,7 +34,13 @@ const List = (): React.ReactElement => {
 
   return (
     <Wrapper>
-      <Item title="Lottery" value={drawCount} note={`Years spent: ${yearsSpent}`} isHighlighted={fiveTimes === 1} />
+      <Item
+        title="Lottery"
+        value={drawCount}
+        note={`Years spent: ${yearsSpent}`}
+        isHighlighted={fiveTimes === 1}
+        wide
+      />
       <Item title="2 matches" value={twoTimes} />
       <Item title="3 matches" value={threeTimes} />
       <Item title="4 matches" value={fourTimes} />

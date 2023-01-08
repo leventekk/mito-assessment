@@ -15,11 +15,9 @@ const simulatorReducer = (state: State, action: Action): State => {
       }
     }
     case 'toggleRandomNumbers': {
-      const nextWithRandomNumbers = !state.withRandomNumbers
       return {
         ...state,
-        lockedUserNumbers: nextWithRandomNumbers ? [...state.userNumbers] : [],
-        withRandomNumbers: nextWithRandomNumbers
+        withRandomNumbers: !state.withRandomNumbers
       }
     }
     case 'draw': {
@@ -44,12 +42,12 @@ const simulatorReducer = (state: State, action: Action): State => {
 
       return {
         ...state,
-        drawResult: [...resultNumbers],
-        userNumbers,
         drawCount: nextDrawCount,
-        moneySpent: TICKET_PRICE * nextDrawCount,
-        yearsSpent: Math.floor(nextDrawCount / DRAW_PER_YEAR),
+        drawResult: [...resultNumbers],
         isRunning: matchCount !== LOTTERY_NUMBER_COUNT,
+        moneySpent: TICKET_PRICE * nextDrawCount,
+        userNumbers,
+        yearsSpent: Math.floor(nextDrawCount / DRAW_PER_YEAR),
         matches: {
           ...state.matches,
           [formatCount(matchCount)]: state.matches[formatCount(matchCount)] + 1
@@ -74,13 +72,16 @@ const simulatorReducer = (state: State, action: Action): State => {
     case 'start': {
       return {
         ...state,
-        isRunning: true
+        isRunning: true,
+        lockedUserNumbers: [...state.userNumbers]
       }
     }
     case 'stop': {
       return {
         ...state,
-        isRunning: false
+        isRunning: false,
+        userNumbers: [...state.lockedUserNumbers],
+        lockedUserNumbers: []
       }
     }
   }

@@ -1,63 +1,31 @@
-import { styled, css } from 'styled-components'
-import { useEffect } from 'react'
 import useSimulator from '@hook/useSimulator'
+import Button from '@element/Form/Button'
 import { LOTTERY_NUMBER_COUNT } from '@config'
-
-const Button = styled.button<{ $isInactive?: boolean }>`
-  background: ${({ theme }) => theme.palette.primary};
-  border-radius: 1rem;
-  border: 0;
-  color: ${({ theme }) => theme.palette.light};
-  cursor: pointer;
-  display: block;
-  font-family: ${({ theme }) => theme.defaultFontFamily};
-  font-size: 1.125rem;
-  padding: 0.725rem 1rem;
-  text-align: center;
-  width: 100%;
-
-  ${({ $isInactive }) =>
-    $isInactive === true &&
-    css`
-      background: ${({ theme }) => theme.palette.dark};
-    `}
-
-  &:disabled {
-    background: ${({ theme }) => theme.palette.secondary};
-    color: ${({ theme }) => theme.palette.text};
-    cursor: not-allowed;
-  }
-`
-
-let interval: number
 
 const Action = (): React.ReactElement => {
   const {
-    state: { isRunning, drawInterval, withRandomNumbers, userNumbers },
+    state: { isRunning, withRandomNumbers, userNumbers },
     dispatch
   } = useSimulator()
   const isAllowedToStart = withRandomNumbers || userNumbers.length === LOTTERY_NUMBER_COUNT
 
   const onClick = (): void => {
-    dispatch({ type: isRunning ? 'stop' : 'start' })
-  }
-
-  useEffect(() => {
     if (isRunning) {
-      interval = setInterval(() => {
-        dispatch({ type: 'draw' })
-      }, drawInterval)
+      dispatch({ type: 'stop' })
+    } else {
+      dispatch({ type: 'start' })
+      dispatch({ type: 'draw' })
     }
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, [isRunning, drawInterval, dispatch])
+  }
 
   return (
     <div>
-      <Button {...{ onClick }} $isInactive={isRunning} disabled={!isAllowedToStart}>
-        {isAllowedToStart ? (isRunning ? 'Stop' : 'Start') : 'Please select numbers'}
+      <Button {...{ onClick }} $isDanger={isRunning} disabled={!isAllowedToStart}>
+        {isAllowedToStart
+          ? isRunning
+            ? 'Stop'
+            : 'Start'
+          : 'Please select at least 5 numbers or play with random ones'}
       </Button>
     </div>
   )

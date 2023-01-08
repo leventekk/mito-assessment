@@ -5,9 +5,10 @@ declare module 'styled-components' {
     palette: {
       primary: string
       secondary: string
-      dark: string
-      light: string
-      text: string
+      accent: string
+      danger: string
+      neutral: string
+      disabled: string
     }
     defaultFontFamily: string
   }

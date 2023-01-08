@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 import useSimulator from '@hook/useSimulator'
-import Display from './NumbersDisplay'
-import Edit from './EditableNumbersDisplay'
+import List from '@element/Numbers/List'
+import EditableList from './EditableList'
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,11 +17,11 @@ const Numbers = (): React.ReactElement => {
 
   return (
     <Wrapper>
-      <Display title="Lottery numbers:" values={drawResult} />
-      <Edit
+      {isRunning && <List title="Lottery numbers:" numbers={drawResult} />}
+      <EditableList
         {...{ withRandomNumbers }}
         title="Your numbers:"
-        values={userNumbers}
+        numbers={userNumbers}
         isDisabled={isRunning}
         onAddNumber={(number: number) => {
           dispatch({ type: 'addNumber', number })

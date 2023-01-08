@@ -1,7 +1,9 @@
 import { styled, css } from 'styled-components'
+import media from '@helper/media'
 
-const Wrapper = styled.div<{ $isHighlighted?: boolean }>`
+export const Wrapper = styled.div<{ $isHighlighted?: boolean; $isWide?: boolean }>`
   align-items: center;
+  color: ${({ theme }) => theme.palette.secondary};
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -10,34 +12,40 @@ const Wrapper = styled.div<{ $isHighlighted?: boolean }>`
   ${({ $isHighlighted }) =>
     $isHighlighted === true &&
     css`
-      background: ${({ theme }) => theme.palette.primary};
-      color: ${({ theme }) => theme.palette.light};
-
-      ${Title},
-      ${Note} {
-        color: inherit;
-      }
+      background: ${({ theme }) => theme.palette.accent};
+      color: ${({ theme }) => theme.palette.neutral};
     `}
 
-  & + & {
-    box-shadow: inset 1px 0 rgba(0, 0, 0, 0.2);
-  }
+  ${({ $isWide }) =>
+    $isWide === true &&
+    css`
+      grid-column: -1 /1;
+
+      ${media.greaterThan('desktop')`
+        grid-column: auto;
+      `}
+    `}
 `
 
 const Title = styled.strong`
-  color: ${({ theme }) => theme.palette.dark};
   font-size: 0.75rem;
   font-weight: 400;
 `
 
-const Value = styled.span`
-  font-size: 1.5rem;
+const Value = styled.span<{ $isHighlighted?: boolean }>`
+  color: ${({ theme }) => theme.palette.primary};
+  font-size: 2.25rem;
   font-weight: 900;
-  margin-top: 0.375rem;
+  margin-top: 0.25rem;
+
+  ${({ $isHighlighted }) =>
+    $isHighlighted === true &&
+    css`
+      color: ${({ theme }) => theme.palette.neutral};
+    `}
 `
 
 const Note = styled.small`
-  color: ${({ theme }) => theme.palette.dark};
   font-size: 0.625rem;
 `
 
@@ -45,16 +53,18 @@ const Item = ({
   title,
   value,
   note,
-  isHighlighted
+  isHighlighted,
+  wide
 }: {
   title: string
   value: number
   isHighlighted?: boolean
   note?: string
+  wide?: boolean
 }): React.ReactElement => (
-  <Wrapper $isHighlighted={isHighlighted}>
+  <Wrapper $isHighlighted={isHighlighted} $isWide={wide}>
     <Title>{title}</Title>
-    <Value>{value}</Value>
+    <Value $isHighlighted={isHighlighted}>{value}</Value>
     {note !== null && <Note>{note}</Note>}
   </Wrapper>
 )

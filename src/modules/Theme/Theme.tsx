@@ -1,17 +1,20 @@
 import { createGlobalStyle, DefaultTheme, ThemeProvider } from 'styled-components'
+import { normalize } from 'styled-normalize'
 
 const themeConfig: DefaultTheme = {
-  defaultFontFamily: 'Roboto, sans-serif',
+  defaultFontFamily: 'Poppins, sans-serif',
   palette: {
-    primary: '#512da8',
-    secondary: '#fafafa',
-    dark: '#bcbcbc',
-    light: '#fff',
-    text: '#212121'
+    primary: '#111827',
+    secondary: '#6b7280',
+    accent: '#4338ca',
+    danger: '#b91c1c',
+    neutral: '#fff',
+    disabled: '#f3f4f6'
   }
 }
 
 export const GlobalStyles = createGlobalStyle`
+  ${normalize}
   *,
   *::before,
   *::after {
@@ -23,8 +26,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.palette.light};
-    color: ${({ theme }) => theme.palette.text};
+    background: ${({ theme }) => theme.palette.neutral};
+    color: ${({ theme }) => theme.palette.primary};
     font-family: ${({ theme }) => theme.defaultFontFamily};
     margin: 0;
   }

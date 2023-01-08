@@ -5,21 +5,24 @@ import Content from '@element/Content/Content'
 import Statistics from '@module/Statistics/List'
 import Numbers from '@module/Numbers/Numbers'
 import Summary from '@module/Summary/Summary'
-import Slider from '@module/Speed/Slider'
+import Slider from '@module/Speed/Speed'
 import Action from '@module/Action/Action'
+import Iterator from '@module/Iterator/Iterator'
 
 const Home = (): React.ReactElement => (
   <>
     <GlobalStyles />
     <Container>
       <Title>Lottery Simulator</Title>
-      <Content>
-        <Statistics />
-        <Numbers />
-        <Summary />
-        <Slider />
-        <Action />
-      </Content>
+      <Iterator>
+        <Content>
+          <Statistics />
+          <Numbers />
+          <Summary />
+          <Slider />
+          <Action />
+        </Content>
+      </Iterator>
     </Container>
   </>
 )
