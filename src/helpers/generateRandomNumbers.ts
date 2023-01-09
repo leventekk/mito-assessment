@@ -1,13 +1,15 @@
 import getRandomInteger from './generateRandomInteger'
 
-interface GenerateRandomNumbers {
+interface GenerateRandomNumbersParameters {
   count: number
   min: number
   max: number
   exclude?: number[]
 }
 
-const generateRandomNumbers = ({ count, min, max, exclude = [] }: GenerateRandomNumbers): number[] => {
+export type GenerateRandomNumbers = (parameters: GenerateRandomNumbersParameters) => number[]
+
+const generateRandomNumbers = ({ count, min, max, exclude = [] }: GenerateRandomNumbersParameters): number[] => {
   const numbers: number[] = []
 
   while (numbers.length !== count) {

@@ -52,7 +52,7 @@ export const simulatorState: State = {
   userNumbers: [],
   lockedUserNumbers: [],
   withRandomNumbers: false,
-  yearsSpent: 10
+  yearsSpent: 0
 }
 
 export interface SimulatorContextValue {
