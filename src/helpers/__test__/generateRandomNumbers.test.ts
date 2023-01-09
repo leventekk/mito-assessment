@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import generateRandomNumbers from '../generateRandomNumbers'
 
 describe('generateRandomNumbers', () => {
