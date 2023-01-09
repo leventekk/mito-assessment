@@ -14,8 +14,8 @@ jobs:
           cache: yarn
 
       - run: yarn install --fozen-lockfile
-      - run: yarn eslint .
-      - run: yarn jest
+      - run: yarn lint
+      - run: yarn test
 
   deploy:
     runs-on: ubuntu-latest

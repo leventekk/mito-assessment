@@ -1,6 +1,6 @@
 vite.config.ts
+vitest.config.ts
 vite-env.d.ts
-jest.config.ts
 node_modules
 dist
 .yarn

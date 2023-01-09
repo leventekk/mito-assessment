@@ -1,3 +1,4 @@
+import { vi } from 'vitest'
 import simulatorReducer, { type SimulatorReducer, type Config } from '../SimulatorReducer'
 import type { State } from '../SimulatorContext'
 import mapMatchCount from '../mapMatchCount'
@@ -11,8 +12,8 @@ describe('SimulatorReducer', () => {
   let reducer: SimulatorReducer
 
   beforeEach(() => {
-    counterService = jest.fn().mockReturnValue(0)
-    numberGeneratorService = jest.fn().mockReturnValue([])
+    counterService = vi.fn().mockReturnValue(0)
+    numberGeneratorService = vi.fn().mockReturnValue([])
     state = createMockState()
     config = {
       TICKET_PRICE: 100,
@@ -123,8 +124,8 @@ describe('SimulatorReducer', () => {
           isRunning: true,
           drawCount: 51
         })
-        counterService = jest.fn().mockReturnValue(0)
-        numberGeneratorService = jest.fn().mockReturnValue([20, 21, 22, 23, 24])
+        counterService = vi.fn().mockReturnValue(0)
+        numberGeneratorService = vi.fn().mockReturnValue([20, 21, 22, 23, 24])
         reducer = simulatorReducer(mapMatchCount, counterService, numberGeneratorService, config)
       })
 
@@ -166,8 +167,8 @@ describe('SimulatorReducer', () => {
             isRunning: true,
             withRandomNumbers: true
           })
-          counterService = jest.fn().mockReturnValue(0)
-          numberGeneratorService = jest.fn().mockReturnValue([20, 21, 22, 23, 24])
+          counterService = vi.fn().mockReturnValue(0)
+          numberGeneratorService = vi.fn().mockReturnValue([20, 21, 22, 23, 24])
           reducer = simulatorReducer(mapMatchCount, counterService, numberGeneratorService, config)
         })
 
@@ -187,8 +188,8 @@ describe('SimulatorReducer', () => {
             withRandomNumbers: true,
             lockedUserNumbers: [1, 2]
           })
-          counterService = jest.fn().mockReturnValue(0)
-          numberGeneratorService = jest.fn().mockReturnValue([22, 23, 24])
+          counterService = vi.fn().mockReturnValue(0)
+          numberGeneratorService = vi.fn().mockReturnValue([22, 23, 24])
           reducer = simulatorReducer(mapMatchCount, counterService, numberGeneratorService, config)
         })
 
@@ -203,7 +204,7 @@ describe('SimulatorReducer', () => {
 
       describe('when there is a match', () => {
         beforeEach(() => {
-          counterService = jest.fn().mockReturnValue(3)
+          counterService = vi.fn().mockReturnValue(3)
           reducer = simulatorReducer(mapMatchCount, counterService, numberGeneratorService, config)
         })
 
@@ -220,7 +221,7 @@ describe('SimulatorReducer', () => {
 
       describe('when there is a full match', () => {
         beforeEach(() => {
-          counterService = jest.fn().mockReturnValue(5)
+          counterService = vi.fn().mockReturnValue(5)
           reducer = simulatorReducer(mapMatchCount, counterService, numberGeneratorService, config)
         })
 
