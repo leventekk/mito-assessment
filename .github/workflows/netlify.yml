@@ -4,8 +4,22 @@ on:
     branches:
       - main
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+
+      - run: yarn install --fozen-lockfile
+      - run: yarn eslint .
+      - run: yarn jest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
     steps:
       - uses: actions/checkout@v2
 
@@ -15,8 +29,6 @@ jobs:
           cache: yarn
 
       - run: yarn install --fozen-lockfile
-      - run: yarn eslint .
-      - run: yarn jest
       - run: yarn build
 
       - name: Deploy to Netlify
