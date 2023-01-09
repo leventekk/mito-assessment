@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import useSimulator from '@hook/useSimulator'
 
-let interval: number
+let interval: NodeJS.Timer
 
 const Iterator = ({ children }: React.PropsWithChildren): React.ReactElement => {
   const {
