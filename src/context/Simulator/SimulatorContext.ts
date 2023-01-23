@@ -22,7 +22,7 @@ export interface State {
 
 type ActionNames = 'updateInterval' | 'draw' | 'addNumber' | 'removeNumber' | 'toggleRandomNumbers' | 'start' | 'stop'
 
-type GeneralAction<T extends ActionNames, S = {}> = {
+type GeneralAction<T extends ActionNames, S = unknown> = {
   type: T
 } & S
 
