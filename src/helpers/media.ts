@@ -5,11 +5,11 @@ export const breakpoints = {
   desktop: '800px'
 }
 
-interface TBreakpoints {
+interface Breakpoints {
   desktop: string
 }
 
-const breakpointsInRem = pxToRem<TBreakpoints>(breakpoints)
-const media = generateMedia<TBreakpoints, DefaultTheme>(breakpointsInRem)
+const breakpointsInRem = pxToRem<Breakpoints>(breakpoints)
+const media = generateMedia<Breakpoints, DefaultTheme>(breakpointsInRem)
 
 export default media
